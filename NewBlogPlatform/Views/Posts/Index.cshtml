@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<NewBlogPlatform.ViewModels.Posts.PostItemViewModel>
+
+<h3> Posts</h3>
+@Html.ActionLink("New Post", "Create", "Posts",null,new {@class="btn btn-primary" })
+<table>
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Title
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var post in Model)
+        {
+            <tr>
+                <td>@post.Date</td>
+                <td>@post.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
