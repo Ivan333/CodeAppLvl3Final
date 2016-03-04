@@ -1,7 +1,7 @@
-﻿@model  IEnumerable<NewBlogPlatform.ViewModels.Posts.PostItemViewModel>
+﻿@model  IEnumerable<NewBlogPlatform.ViewModels.Posts.MyPostViewModel>
 
 <h3> Posts</h3>
-@*@Html.ActionLink("New Post", "Create", "Posts",null,new {@class="btn btn-primary" })*@
+@Html.ActionLink("New Post", "Create", "Posts",null,new {@class="btn btn-primary" })
 <table>
     <thead>
         <tr>
@@ -12,24 +12,27 @@
                 By
             </th>
             <th>
+            </th>
+            Date
+            <th>
                 See more
             </th>
 
-            <th>
-                Date
-            </th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var post in Model)
+        @if (Model != null)
         {
+            foreach (var post in Model)
+            {
             <tr>
                 <td>@post.Title</td>
                 <td>By: @post.Username</td>
-                @Html.ActionLink("See more", "Details/"+@post.userSlug, "Posts", null, new { @class = "btn btn-primary" })
                 <td>@post.Date</td>
+                <td>@Html.ActionLink("See more", "Details/" + @post.postSlug, "Posts", null)</td>
 
             </tr>
+            }
         }
     </tbody>
-</table>
+    </table>

@@ -1,6 +1,6 @@
 ﻿@model  NewBlogPlatform.ViewModels.Posts.CreatePostViewModel
 
-@using (Html.BeginForm("Create", "Posts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "Posts", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
 {
     <h4>New post</h4>
     <hr />
@@ -19,5 +19,6 @@
             @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
         </div>
     </div>
-    <input type="submit" />
+    
+    <input type="submit" value="Add Post"/>
 }
