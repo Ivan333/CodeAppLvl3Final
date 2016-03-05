@@ -1,35 +1,27 @@
 ﻿@model  IEnumerable<NewBlogPlatform.ViewModels.Posts.PostItemViewModel>
 
-<h3> Posts</h3>
-@*@Html.ActionLink("New Post", "Create", "Posts",null,new {@class="btn btn-primary" })*@
-<table>
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                By
-            </th>
-            <th>
-                See more
-            </th>
 
-            <th>
-                Date
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var post in Model)
-        {
-            <tr>
-                <td>@post.Title</td>
-                <td>By: @post.Username</td>
-                @Html.ActionLink("See more", "Details/"+@post.userSlug, "Posts", null, new { @class = "btn btn-primary" })
-                <td>@post.Date</td>
 
-            </tr>
-        }
-    </tbody>
-</table>
+<ul class="posts list-unstyled">
+
+
+    @foreach (var post in Model)
+    {
+        <li class="post-item">
+            <div>
+                <h3>@post.Title</h3>
+                <img class="post-img" src="@post.ImageUrl" />
+                <div class="post-content">@Html.Raw(@post.Content)</div>
+                <div>
+                    <div class="pull-left">
+                        @post.Date
+                    </div>
+                    <div class="pull-right">
+                        @post.Username
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    }
+</ul>

@@ -1,20 +1,21 @@
-﻿@model  NewBlogPlatform.ViewModels.Posts.PostItemViewModel
+﻿@model  NewBlogPlatform.Models.Post
 
 
-    
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+
+<div>
+    <div class="post-item">
+        <div>
+            <h3>@Model.Title</h3>
+            <img class="post-img" src="@Model.ImageUrl"  style="width:10%;"/>
+            <div>@Html.Raw(@Model.Content)</div>
+            <div>
+                <div class="pull-left">
+                    @Model.DateCreated
+                </div>
+                <div class="pull-right">
+                    @Model.ApplicationUser.UserName
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Date, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Date, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
-        </div>
-    </div>
+</div>

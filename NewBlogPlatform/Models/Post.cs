@@ -15,8 +15,9 @@ namespace NewBlogPlatform.Models
 
         public  string Content { get; set; }
         public string Slug { get; set; }
-        
-        
+
+        public string ImageUrl { get; set; }
+
         public string UserRefId { get; set; }
 
         [ForeignKey("UserRefId")]
@@ -27,13 +28,14 @@ namespace NewBlogPlatform.Models
 
         }
 
-        public Post(string title,string content, string userId)
+        public Post(string title,string content, string userId, string imgUrl)
         {
             DateCreated = DateTime.UtcNow;
             Title = title;
             Content = content;
             UserRefId = userId;
             Slug = generateSlug();
+            ImageUrl = imgUrl;
         }
 
         private string generateSlug()

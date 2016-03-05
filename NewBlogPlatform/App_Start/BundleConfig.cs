@@ -25,6 +25,7 @@ namespace NewBlogPlatform
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Trumbowyg-2.0.0-beta.7/dist/ui/trumbowyg.min.css",
                       "~/Content/site.css"));
         }
     }

@@ -1,38 +1,50 @@
 ﻿@model  IEnumerable<NewBlogPlatform.ViewModels.Posts.MyPostViewModel>
 
-<h3> Posts</h3>
-@Html.ActionLink("New Post", "Create", "Posts",null,new {@class="btn btn-primary" })
-<table>
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                By
-            </th>
-            <th>
-            </th>
-            Date
-            <th>
-                See more
-            </th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null)
-        {
-            foreach (var post in Model)
-            {
+<h3 class="myposts-pad"> Posts</h3>
+@Html.ActionLink("New Post", "Create", "Posts",null,new {@class= "btn btn-primary myposts-pad" })
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@post.Title</td>
-                <td>By: @post.Username</td>
-                <td>@post.Date</td>
-                <td>@Html.ActionLink("See more", "Details/" + @post.postSlug, "Posts", null)</td>
+                <th>
+                    Title
+                </th>
+                <th>
+                    By
+                </th>
+
+                <th>
+                    Date
+                </th>
+                <th>
+                    See more
+                </th>
+                <th>
+                    Delete
+                </th>
 
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td>By: @post.Username</td>
+                    <td>@post.Date</td>
+                    <td>@Html.ActionLink("See more", "Details/" + @post.postSlug, "Posts", null) </td>
+                    <td>
+
+                        @using(Html.BeginForm("Delete","Posts",new { id = post.postId }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            <input type="hidden" id="id" name="id" value="@post.postId" />
+                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                        }
+
+                    </td>
+
+                </tr>
             }
-        }
-    </tbody>
+        </tbody>
     </table>
+</div>

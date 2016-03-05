@@ -20,7 +20,7 @@ namespace NewBlogPlatform.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Navigator()
         {
             ViewBag.Message = "Your contact page.";
 
